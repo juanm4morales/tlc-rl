@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-04-18 00:25:49 by Eclipse SUMO netedit Version 1.19.0
+-->
+
+<!-- Scaled up 1.13 -->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- VTypes -->
+    <vType id="SLOWVEHTYPE" length="4.20" color="cyan" accel="2.1" maxSpeed="11.2" decel="4.3" />
+    <vType id="MEDVEHTYPE" length="4.20" color="green" accel="2.3" maxSpeed="14.0" decel="4.4" />
+    <vType id="FASTVEHTYPE" length="4.20" color="red" accel="2.5" maxSpeed="22.2" decel="4.5" />
+    <vTypeDistribution id="td_0" vTypes="SLOWVEHTYPE MEDVEHTYPE FASTVEHTYPE"
+        probabilities="0.25 0.60 0.15" />
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+
+
+    <!-- 10 minutes Warming -->
+    <flow id="ew0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JE"
+        toJunction="JW" end="600.00" period="exp(0.17402)" />
+    <flow id="en0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JE"
+        toJunction="JN" end="600.00" period="exp(0.05537)" />
+    <flow id="es0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JE"
+        toJunction="JS" end="600.00" period="exp(0.01989)" />
+
+    <flow id="we0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JW"
+        toJunction="JE" end="600.00" period="exp(0.17402)" />
+    <flow id="wn0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JW"
+        toJunction="JN" end="600.00" period="exp(0.01989)" />
+    <flow id="ws0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JW"
+        toJunction="JS" end="600.00" period="exp(0.05537)" />
+
+    <flow id="ns0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JN"
+        toJunction="JS" end="600.00" period="exp(0.09492)" />
+    <flow id="ne0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JN"
+        toJunction="JE" end="600.00" period="exp(0.01085)" />
+    <flow id="nw0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JN"
+        toJunction="JW" end="600.00" period="exp(0.02983)" />
+
+    <flow id="sn0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JS"
+        toJunction="JN" end="600.00" period="exp(0.09492)" />
+    <flow id="se0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JS"
+        toJunction="JE" end="600.00" period="exp(0.02983)" />
+    <flow id="sw0" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JS"
+        toJunction="JW" end="600.00" period="exp(0.01085)" />
+
+    <!-- 0-4hs -->
+    <flow id="ew1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JW" end="15000.00" period="exp(0.17402)" />
+    <flow id="en1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JN" end="15000.00" period="exp(0.05469)" />
+    <flow id="es1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JS" end="15000.00" period="exp(0.01989)" />
+
+    <flow id="we1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JE" end="15000.00" period="exp(0.16611)" />
+    <flow id="wn1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JN" end="15000.00" period="exp(0.01898)" />
+    <flow id="ws1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JS" end="15000.00" period="exp(0.05221)" />
+
+    <flow id="ns1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JS" end="15000.00" period="exp(0.10283)" />
+    <flow id="ne1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JE" end="15000.00" period="exp(0.01175)" />
+    <flow id="nw1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JW" end="15000.00" period="exp(0.03232)" />
+
+    <flow id="sn1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JN" end="15000.00" period="exp(0.09492)" />
+    <flow id="se1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JE" end="15000.00" period="exp(0.02983)" />
+    <flow id="sw1" type="td_0" begin="600.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JW" end="15000.00" period="exp(0.01085)" />
+
+    <!-- 4-6hs  -->
+    <flow id="ew2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JW" end="22200.00" period="exp(0.14238)" />
+    <flow id="en2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JN" end="22200.00" period="exp(0.04475)" />
+    <flow id="es2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JS" end="22200.00" period="exp(0.01627)" />
+
+    <flow id="we2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JE" end="22200.00" period="exp(0.15029)" />
+    <flow id="wn2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JN" end="22200.00" period="exp(0.01718)" />
+    <flow id="ws2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JS" end="22200.00" period="exp(0.04723)" />
+
+    <flow id="ns2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JS" end="22200.00" period="exp(0.09967)" />
+    <flow id="ne2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JE" end="22200.00" period="exp(0.01139)" />
+    <flow id="nw2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JW" end="22200.00" period="exp(0.03132)" />
+
+    <flow id="sn2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JN" end="22200.00" period="exp(0.10046)" />
+    <flow id="se2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JE" end="22200.00" period="exp(0.03157)" />
+    <flow id="sw2" type="td_0" begin="15000.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JW" end="22200.00" period="exp(0.01148)" />
+
+    <!-- 6-8hs -->
+    <flow id="ew3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JW" end="29400.00" period="exp(0.15029)" />
+    <flow id="en3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JN" end="29400.00" period="exp(0.04723)" />
+    <flow id="es3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JS" end="29400.00" period="exp(0.01718)" />
+
+    <flow id="we3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JE" end="29400.00" period="exp(0.14238)" />
+    <flow id="wn3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JN" end="29400.00" period="exp(0.01627)" />
+    <flow id="ws3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JS" end="29400.00" period="exp(0.04475)" />
+
+    <flow id="ns3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JS" end="29400.00" period="exp(0.15424)" />
+    <flow id="ne3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JE" end="29400.00" period="exp(0.01763)" />
+    <flow id="nw3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JW" end="29400.00" period="exp(0.04848)" />
+
+    <flow id="sn3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JN" end="29400.00" period="exp(0.15029)" />
+    <flow id="se3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JE" end="29400.00" period="exp(0.04723)" />
+    <flow id="sw3" type="td_0" begin="22200.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JW" end="29400.00" period="exp(0.01718)" />
+
+    <!-- 8-12hs -->
+    <flow id="ew4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JW" end="43800.00" period="exp(0.16611)" />
+    <flow id="en4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JN" end="43800.00" period="exp(0.05469)" />
+    <flow id="es4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JE"
+        toJunction="JS" end="43800.00" period="exp(0.01989)" />
+
+    <flow id="we4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JE" end="43800.00" period="exp(0.17402)" />
+    <flow id="wn4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JN" end="43800.00" period="exp(0.01898)" />
+    <flow id="ws4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JW"
+        toJunction="JS" end="43800.00" period="exp(0.05469)" />
+
+    <flow id="ns4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JS" end="43800.00" period="exp(0.11865)" />
+    <flow id="ne4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JE" end="43800.00" period="exp(0.01356)" />
+    <flow id="nw4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JN"
+        toJunction="JW" end="43800.00" period="exp(0.03729)" />
+
+    <flow id="sn4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JN" end="43800.00" period="exp(0.12656)" />
+    <flow id="se4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JE" end="43800.00" period="exp(0.03978)" />
+    <flow id="sw4" type="td_0" begin="29400.00" departLane="best" departSpeed="random"
+        fromJunction="JS"
+        toJunction="JW" end="43800.00" period="exp(0.01446)" />
+</routes>

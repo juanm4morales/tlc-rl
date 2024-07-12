@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-04-18 00:25:49 by Eclipse SUMO netedit Version 1.19.0
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- VTypes -->
+    <vType id="SLOWVEHTYPE" length="4.20" color="cyan" accel="2.1" maxSpeed="11.2" decel="4.3" />
+    <vType id="MEDVEHTYPE" length="4.20" color="green" accel="2.3" maxSpeed="14.0" decel="4.4" />
+    <vType id="FASTVEHTYPE" length="4.20" color="red" accel="2.5" maxSpeed="22.2" decel="4.5" />
+    <vTypeDistribution id="td_0" vTypes="SLOWVEHTYPE MEDVEHTYPE FASTVEHTYPE"
+        probabilities="0.25 0.60 0.15" />
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <!-- 0-24hs -->
+    <flow id="ew" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JE"
+        toJunction="JW" end="86400.00" period="exp(0.154)" />
+    <flow id="en" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JE"
+        toJunction="JN" end="86400.00" period="exp(0.0484)" />
+    <flow id="es" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JE"
+        toJunction="JS" end="86400.00" period="exp(0.0176)" />
+
+    <flow id="we" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JW"
+        toJunction="JE" end="86400.00" period="exp(0.154)" />
+    <flow id="wn" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JW"
+        toJunction="JN" end="86400.00" period="exp(0.0176)" />
+    <flow id="ws" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JW"
+        toJunction="JS" end="86400.00" period="exp(0.0484)" />
+
+    <flow id="ns" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JN"
+        toJunction="JS" end="86400.00" period="exp(0.084)" />
+    <flow id="ne" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JN"
+        toJunction="JE" end="86400.00" period="exp(0.0096)" />
+    <flow id="nw" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JN"
+        toJunction="JW" end="86400.00" period="exp(0.0264)" />
+
+    <flow id="sn" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JS"
+        toJunction="JN" end="86400.00" period="exp(0.084)" />
+    <flow id="se" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JS"
+        toJunction="JE" end="86400.00" period="exp(0.0264)" />
+    <flow id="sw" type="td_0" begin="0.00" departLane="best" departSpeed="random" fromJunction="JS"
+        toJunction="JW" end="86400.00" period="exp(0.0096)" />
+
+
+
+</routes>

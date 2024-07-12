@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-07-03 17:55:41 by Eclipse SUMO GUI Version v1_20_0+0335-d2d5b9dde81
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="/home/juanma/Dev/ia-uncuyo-2022/proyecto_final/nets/2x2_intersection/intersection_1.net.xml"/>
+        <route-files value="/home/juanma/Dev/ia-uncuyo-2022/proyecto_final/nets/2x2_intersection/routes_unbalanced_12Hs_scaled.rou.xml"/>
+        <junction-taz value="true"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+        <end value="43800"/>
+    </time>
+
+    <traci_server>
+        <remote-port value="55267"/>
+    </traci_server>
+
+    <gui_only>
+        <start value="true"/>
+    </gui_only>
+
+</configuration>
+-->
+
+<snapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/state_file.xsd" version="v1_20_0+0335-d2d5b9dde81" time="600.00" type="micro">
+    <route id="!en0" state="0" edges="JE-source JN-sink"/>
+    <route id="!en0.0!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.1!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.10!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.11!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.12!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.13!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.14!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.15!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.16!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.17!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.18!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.19!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.2!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.20!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.21!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.22!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.23!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.24!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.25!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.26!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.27!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.28!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.29!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.3!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.30!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.31!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.32!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.33!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.34!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.4!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.5!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.6!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.7!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.8!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!en0.9!var#1" state="0" edges="E_E_in E_S_out"/>
+    <route id="!es0" state="0" edges="JE-source JS-sink"/>
+    <route id="!es0.0!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.1!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.10!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.11!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.12!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.13!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.14!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.15!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.2!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.3!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.4!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.5!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.6!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.7!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.8!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!es0.9!var#1" state="0" edges="E_E_in E_N_out"/>
+    <route id="!ew0" state="0" edges="JE-source JW-sink"/>
+    <route id="!ew0.0!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.1!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.10!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.100!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.101!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.102!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.103!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.104!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.105!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.106!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.107!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.108!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.11!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.12!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.13!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.14!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.15!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.16!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.17!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.18!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.19!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.2!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.20!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.21!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.22!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.23!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.24!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.25!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.26!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.27!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.28!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.29!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.3!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.30!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.31!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.32!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.33!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.34!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.35!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.36!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.37!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.38!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.39!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.4!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.40!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.41!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.42!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.43!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.44!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.45!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.46!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.47!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.48!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.49!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.5!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.50!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.51!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.52!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.53!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.54!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.55!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.56!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.57!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.58!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.59!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.6!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.60!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.61!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.62!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.63!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.64!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.65!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.66!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.67!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.68!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.69!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.7!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.70!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.71!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.72!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.73!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.74!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.75!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.76!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.77!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.78!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.79!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.8!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.80!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.81!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.82!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.83!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.84!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.85!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.86!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.87!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.88!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.89!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.9!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.90!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.91!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.92!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.93!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.94!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.95!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.96!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.97!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.98!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew0.99!var#1" state="0" edges="E_E_in E_E_out"/>
+    <route id="!ew1" state="0" edges="JE-source JW-sink"/>
+    <route id="!ne0" state="0" edges="JN-source JE-sink"/>
+    <route id="!ne0.0!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.1!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.2!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.3!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.4!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.5!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.6!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.7!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.8!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ne0.9!var#1" state="0" edges="E_N_in E_W_out"/>
+    <route id="!ns0" state="0" edges="JN-source JS-sink"/>
+    <route id="!ns0.0!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.1!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.10!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.11!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.12!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.13!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.14!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.15!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.16!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.17!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.18!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.19!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.2!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.20!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.21!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.22!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.23!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.24!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.25!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.26!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.27!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.28!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.29!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.3!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.30!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.31!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.32!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.33!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.34!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.35!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.36!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.37!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.38!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.39!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.4!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.40!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.41!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.42!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.43!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.44!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.45!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.46!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.47!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.48!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.49!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.5!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.50!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.6!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.7!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.8!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!ns0.9!var#1" state="0" edges="E_N_in E_N_out"/>
+    <route id="!nw0" state="0" edges="JN-source JW-sink"/>
+    <route id="!nw0.0!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.1!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.10!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.11!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.12!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.13!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.14!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.15!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.16!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.17!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.18!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.19!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.2!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.20!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.21!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.3!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.4!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.5!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.6!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.7!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.8!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!nw0.9!var#1" state="0" edges="E_N_in E_E_out"/>
+    <route id="!se0" state="0" edges="JS-source JE-sink"/>
+    <route id="!se0.0!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.1!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.2!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.3!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.4!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.5!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.6!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.7!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.8!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!se0.9!var#1" state="0" edges="E_S_in E_W_out"/>
+    <route id="!sn0" state="0" edges="JS-source JN-sink"/>
+    <route id="!sn0.0!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.1!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.10!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.11!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.12!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.13!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.14!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.15!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.16!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.17!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.18!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.19!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.2!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.20!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.21!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.22!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.23!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.24!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.25!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.26!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.27!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.28!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.29!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.3!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.30!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.31!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.32!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.33!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.34!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.35!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.36!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.37!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.38!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.39!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.4!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.40!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.41!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.42!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.43!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.44!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.45!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.46!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.47!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.48!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.49!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.5!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.50!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.51!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.52!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.53!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.54!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.6!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.7!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.8!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sn0.9!var#1" state="0" edges="E_S_in E_S_out"/>
+    <route id="!sw0" state="0" edges="JS-source JW-sink"/>
+    <route id="!sw0.0!var#1" state="0" edges="E_S_in E_E_out"/>
+    <route id="!sw0.1!var#1" state="0" edges="E_S_in E_E_out"/>
+    <route id="!sw0.2!var#1" state="0" edges="E_S_in E_E_out"/>
+    <route id="!sw0.3!var#1" state="0" edges="E_S_in E_E_out"/>
+    <route id="!sw0.4!var#1" state="0" edges="E_S_in E_E_out"/>
+    <route id="!sw0.5!var#1" state="0" edges="E_S_in E_E_out"/>
+    <route id="!sw0.6!var#1" state="0" edges="E_S_in E_E_out"/>
+    <route id="!we0" state="0" edges="JW-source JE-sink"/>
+    <route id="!we0.0!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.1!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.10!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.11!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.12!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.13!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.14!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.15!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.16!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.17!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.18!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.19!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.2!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.20!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.21!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.22!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.23!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.24!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.25!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.26!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.27!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.28!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.29!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.3!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.30!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.31!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.32!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.33!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.34!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.35!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.36!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.37!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.38!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.39!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.4!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.40!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.41!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.42!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.43!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.44!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.45!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.46!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.47!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.48!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.49!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.5!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.50!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.51!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.52!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.53!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.54!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.55!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.56!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.57!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.58!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.59!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.6!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.60!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.61!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.62!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.63!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.64!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.65!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.66!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.67!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.68!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.69!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.7!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.70!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.71!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.72!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.73!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.74!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.75!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.76!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.77!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.78!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.79!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.8!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.80!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.81!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.82!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.83!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.84!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.85!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.86!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.87!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.88!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.89!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.9!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.90!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.91!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!we0.92!var#1" state="0" edges="E_W_in E_W_out"/>
+    <route id="!wn0" state="0" edges="JW-source JN-sink"/>
+    <route id="!wn0.0!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.1!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.10!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.11!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.2!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.3!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.4!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.5!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.6!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.7!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.8!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!wn0.9!var#1" state="0" edges="E_W_in E_S_out"/>
+    <route id="!ws0" state="0" edges="JW-source JS-sink"/>
+    <route id="!ws0.0!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.1!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.10!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.11!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.12!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.13!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.14!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.15!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.16!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.17!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.18!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.19!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.2!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.20!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.21!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.22!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.23!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.24!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.3!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.4!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.5!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.6!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.7!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.8!var#1" state="0" edges="E_W_in E_N_out"/>
+    <route id="!ws0.9!var#1" state="0" edges="E_W_in E_N_out"/>
+    <delay number="64" begin="445" end="381" depart="482.00" time="20016.00"/>
+    <vType id="FASTVEHTYPE" length="4.20" maxSpeed="22.20" color="red" accel="2.5" decel="4.5"/>
+    <vType id="MEDVEHTYPE" length="4.20" maxSpeed="14.00" color="green" accel="2.3" decel="4.4"/>
+    <vType id="SLOWVEHTYPE" length="4.20" maxSpeed="11.20" color="cyan" accel="2.1" decel="4.3"/>
+    <vTypeDistribution id="td_0" vTypes="SLOWVEHTYPE MEDVEHTYPE FASTVEHTYPE" probabilities="0.25 0.60 0.15"/>
+    <vehicle id="en0.30" type="SLOWVEHTYPE" depart="550.13" departLane="best" departSpeed="random" route="!en0.30!var#1" distance="198.63 1" speedFactor="1.0934" reroute="1" state="262326 551000 1 4.30 0 23.41 599000 0 0" pos="77.16 72.96 11.05" speed="11.05 10.40" angle="0.00" posLat="0.00" waitingTime="100000 1 16000 30000">
+        <device id="routing_en0.30" state="0"/>
+    </vehicle>
+    <vehicle id="en0.31" type="SLOWVEHTYPE" depart="556.20" departLane="best" departSpeed="random" route="!en0.31!var#1" distance="198.63 1" speedFactor="1.0073" reroute="1" state="262326 557000 1 4.30 0 21.64 599000 0 0" pos="29.68 25.48 10.75" speed="10.75 9.29" angle="0.00" posLat="0.00" waitingTime="100000 1 14000 24000">
+        <device id="routing_en0.31" state="0"/>
+    </vehicle>
+    <vehicle id="en0.32" type="MEDVEHTYPE" depart="557.66" departLane="best" departSpeed="random" route="!en0.32!var#1" distance="198.63 1" speedFactor="1.2043" reroute="1" state="262326 559000 1 4.30 0 25.10 599000 0 0" pos="9.61 5.41 9.42" speed="9.42 7.20" angle="0.00" posLat="0.00" waitingTime="100000 1 13000 23000">
+        <device id="routing_en0.32" state="0"/>
+    </vehicle>
+    <vehicle id="en0.33" type="SLOWVEHTYPE" depart="558.32" departLane="best" departSpeed="random" route="!en0.33!var#1" distance="0 1" speedFactor="0.8627" reroute="1" state="262326 562000 0 4.30 0 20.67 599000 0 0" pos="187.23 183.03 4.28" speed="4.28 6.29" angle="270.00" posLat="0.00" waitingTime="100000 1 12000 21000">
+        <device id="routing_en0.33" state="0"/>
+    </vehicle>
+    <vehicle id="en0.34" type="MEDVEHTYPE" depart="587.90" departLane="best" departSpeed="random" route="!en0.34!var#1" distance="0 1" speedFactor="0.9604" reroute="1" state="262326 588000 0 4.30 0 2.34 599000 0 0" pos="125.55 121.35 8.08" speed="8.08 6.98" angle="270.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_en0.34" state="0"/>
+    </vehicle>
+    <vehicle id="es0.10" type="MEDVEHTYPE" depart="476.07" departLane="best" departSpeed="random" route="!es0.10!var#1" distance="189.6 1" speedFactor="1.0967" reroute="1" state="262326 480000 0 4.30 20000 105.25 599000 0 0" pos="4.91 0.71 0.00" speed="0.00 0.00" angle="261.85" posLat="0.00" waitingTime="100000 5 0 20000 22000 57000 60000 63000 75000 77000 85000 99000">
+        <device id="routing_es0.10" state="0"/>
+    </vehicle>
+    <vehicle id="es0.11" type="FASTVEHTYPE" depart="500.43" departLane="best" departSpeed="random" route="!es0.11!var#1" distance="0 1" speedFactor="0.9995" reroute="1" state="262326 501000 0 4.30 15000 87.29 599000 0 0" pos="182.72 178.52 0.00" speed="0.00 0.00" angle="270.00" posLat="0.00" waitingTime="100000 5 0 15000 20000 55000 58000 60000 71000 73000 82000 84000">
+        <device id="routing_es0.11" state="0"/>
+    </vehicle>
+    <vehicle id="es0.12" type="SLOWVEHTYPE" depart="501.90" departLane="best" departSpeed="random" route="!es0.12!var#1" distance="0 1" speedFactor="0.9273" reroute="1" state="262326 503000 0 4.30 12000 80.67 599000 0 0" pos="176.02 171.82 0.00" speed="0.00 0.00" angle="270.00" posLat="0.00" waitingTime="100000 3 0 12000 19000 54000 70000 71000">
+        <device id="routing_es0.12" state="0"/>
+    </vehicle>
+    <vehicle id="es0.13" type="SLOWVEHTYPE" depart="504.44" departLane="best" departSpeed="random" route="!es0.13!var#1" distance="0 1" speedFactor="0.9274" reroute="1" state="262326 505000 0 4.30 11000 79.27 599000 0 0" pos="169.32 165.12 0.00" speed="0.00 0.00" angle="270.00" posLat="0.00" waitingTime="100000 3 0 11000 18000 53000 56000 57000">
+        <device id="routing_es0.13" state="0"/>
+    </vehicle>
+    <vehicle id="es0.14" type="MEDVEHTYPE" depart="526.55" departLane="best" departSpeed="random" route="!es0.14!var#1" distance="0 1" speedFactor="0.9174" reroute="1" state="262326 528000 0 4.30 10000 59.69 599000 0 0" pos="162.62 158.42 0.00" speed="0.00 0.00" angle="270.00" posLat="0.00" waitingTime="100000 2 0 10000 17000 51000">
+        <device id="routing_es0.14" state="0"/>
+    </vehicle>
+    <vehicle id="es0.15" type="SLOWVEHTYPE" depart="526.95" departLane="best" departSpeed="random" route="!es0.15!var#1" distance="0 1" speedFactor="0.9364" reroute="1" state="262326 530000 0 4.30 8000 55.46 599000 0 0" pos="155.92 151.72 0.00" speed="0.00 0.00" angle="270.00" posLat="0.00" waitingTime="100000 2 0 8000 16000 50000">
+        <device id="routing_es0.15" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.100" type="SLOWVEHTYPE" depart="561.84" departLane="best" departSpeed="random" route="!ew0.100!var#1" distance="0 1" speedFactor="0.9966" reroute="1" state="262326 562000 0 4.30 0 21.75 599000 0 0" pos="175.10 170.90 5.94" speed="5.94 6.79" angle="270.00" posLat="0.00" waitingTime="100000 1 11000 18000">
+        <device id="routing_ew0.100" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.101" type="SLOWVEHTYPE" depart="566.78" departLane="best" departSpeed="random" route="!ew0.101!var#1" distance="0 1" speedFactor="1.0654" reroute="1" state="262326 567000 0 4.30 0 21.47 599000 0 0" pos="122.26 118.06 0.12" speed="0.12 0.30" angle="270.00" posLat="0.00" waitingTime="100000 1 10000 18000">
+        <device id="routing_ew0.101" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.102" type="MEDVEHTYPE" depart="571.45" departLane="best" departSpeed="random" route="!ew0.102!var#1" distance="0 1" speedFactor="0.8669" reroute="1" state="262326 572000 0 4.30 0 15.91 599000 0 0" pos="159.53 155.33 8.18" speed="8.18 9.62" angle="270.00" posLat="0.00" waitingTime="100000 1 10000 12000">
+        <device id="routing_ew0.102" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.103" type="MEDVEHTYPE" depart="575.57" departLane="best" departSpeed="random" route="!ew0.103!var#1" distance="0 1" speedFactor="0.9337" reroute="1" state="262326 576000 0 4.30 0 15.06 599000 0 0" pos="115.42 111.22 0.51" speed="0.51 0.76" angle="270.00" posLat="0.00" waitingTime="100000 1 9000 12000">
+        <device id="routing_ew0.103" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.104" type="MEDVEHTYPE" depart="583.98" departLane="best" departSpeed="random" route="!ew0.104!var#1" distance="0 1" speedFactor="1.0009" reroute="1" state="262326 584000 0 4.30 0 5.16 599000 0 0" pos="142.06 137.86 8.60" speed="8.60 6.96" angle="270.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ew0.104" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.105" type="MEDVEHTYPE" depart="584.81" departLane="best" departSpeed="random" route="!ew0.105!var#1" distance="0 1" speedFactor="0.9958" reroute="1" state="262326 585000 0 4.30 0 6.60 599000 0 0" pos="107.88 103.68 0.74" speed="0.74 0.80" angle="270.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ew0.105" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.106" type="MEDVEHTYPE" depart="591.03" departLane="best" departSpeed="random" route="!ew0.106!var#1" distance="0 1" speedFactor="0.8575" reroute="1" state="262326 592000 0 4.30 0 0.84 599000 0 0" pos="90.52 86.32 10.31" speed="10.31 13.27" angle="270.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ew0.106" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.107" type="SLOWVEHTYPE" depart="595.57" departLane="best" departSpeed="random" route="!ew0.107!var#1" distance="0 1" speedFactor="0.9915" reroute="1" state="262326 596000 0 4.30 0 1.01 599000 0 0" pos="26.57 22.37 8.86" speed="8.86 7.68" angle="270.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ew0.107" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.108" type="SLOWVEHTYPE" depart="598.13" departLane="best" departSpeed="random" route="!ew0.108!var#1" distance="0 1" speedFactor="0.8969" reroute="1" state="262326 599000 0 4.30 0 0.00 600000 0 0" pos="4.30 0.10 0.35" speed="0.35 0.35" angle="270.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ew0.108" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.87" type="MEDVEHTYPE" depart="493.33" departLane="best" departSpeed="random" route="!ew0.87!var#1" distance="0 1" speedFactor="1.0827" reroute="1" state="262326 494000 0 4.30 17000 91.78 599000 0 0" pos="189.43 185.23 0.00" speed="0.00 0.00" angle="270.00" posLat="0.00" waitingTime="100000 5 0 17000 21000 56000 59000 60000 74000 76000 84000 90000">
+        <device id="routing_ew0.87" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.90" type="SLOWVEHTYPE" depart="522.40" departLane="best" departSpeed="random" route="!ew0.90!var#1" distance="210.4 1" speedFactor="1.0074" reroute="1" state="262326 523000 1 4.30 0 41.46 599000 0 0" pos="180.80 176.60 10.40" speed="10.40 10.90" angle="270.00" posLat="0.00" waitingTime="100000 1 22000 57000">
+        <device id="routing_ew0.90" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.91" type="MEDVEHTYPE" depart="525.90" departLane="best" departSpeed="random" route="!ew0.91!var#1" distance="210.4 1" speedFactor="0.8566" reroute="1" state="262326 526000 1 4.30 0 46.72 599000 0 0" pos="161.75 157.55 10.92" speed="10.92 10.99" angle="270.00" posLat="0.00" waitingTime="100000 1 21000 51000">
+        <device id="routing_ew0.91" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.92" type="SLOWVEHTYPE" depart="529.27" departLane="best" departSpeed="random" route="!ew0.92!var#1" distance="210.4 1" speedFactor="0.9326" reroute="1" state="262326 530000 1 4.30 0 38.50 599000 0 0" pos="135.48 131.28 10.53" speed="10.53 10.25" angle="270.00" posLat="0.00" waitingTime="100000 1 20000 49000">
+        <device id="routing_ew0.92" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.93" type="MEDVEHTYPE" depart="541.47" departLane="best" departSpeed="random" route="!ew0.93!var#1" distance="210.4 1" speedFactor="0.9456" reroute="1" state="262326 542000 1 4.30 0 33.91 599000 0 0" pos="117.15 112.95 10.49" speed="10.49 11.71" angle="270.00" posLat="0.00" waitingTime="100000 1 19000 42000">
+        <device id="routing_ew0.93" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.94" type="SLOWVEHTYPE" depart="542.33" departLane="best" departSpeed="random" route="!ew0.94!var#1" distance="210.4 1" speedFactor="1.0673" reroute="1" state="262326 543000 1 4.30 0 29.13 599000 0 0" pos="94.86 90.66 11.08" speed="11.08 10.80" angle="270.00" posLat="0.00" waitingTime="100000 1 18000 38000">
+        <device id="routing_ew0.94" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.95" type="MEDVEHTYPE" depart="551.86" departLane="best" departSpeed="random" route="!ew0.95!var#1" distance="0 1" speedFactor="1.0899" reroute="1" state="262326 552000 0 4.30 6000 36.65 599000 0 0" pos="149.22 145.02 0.00" speed="0.00 0.00" angle="270.00" posLat="0.00" waitingTime="100000 2 0 6000 15000 32000">
+        <device id="routing_ew0.95" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.96" type="MEDVEHTYPE" depart="552.32" departLane="best" departSpeed="random" route="!ew0.96!var#1" distance="210.4 1" speedFactor="0.9563" reroute="1" state="262326 553000 1 4.30 0 26.63 599000 0 0" pos="65.06 60.86 13.86" speed="13.86 13.66" angle="270.00" posLat="0.00" waitingTime="100000 1 15000 29000">
+        <device id="routing_ew0.96" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.97" type="MEDVEHTYPE" depart="553.10" departLane="best" departSpeed="random" route="!ew0.97!var#1" distance="0 1" speedFactor="1.0571" reroute="1" state="262326 554000 0 4.30 4000 35.13 599000 0 0" pos="142.52 138.32 0.00" speed="0.00 0.01" angle="270.00" posLat="0.00" waitingTime="100000 2 0 4000 14000 30000">
+        <device id="routing_ew0.97" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.98" type="MEDVEHTYPE" depart="555.42" departLane="best" departSpeed="random" route="!ew0.98!var#1" distance="0 1" speedFactor="1.0227" reroute="1" state="262326 556000 0 4.30 2000 33.61 599000 0 0" pos="135.81 131.61 0.00" speed="0.00 0.03" angle="270.00" posLat="0.00" waitingTime="100000 3 0 2000 3000 4000 12000 29000">
+        <device id="routing_ew0.98" state="0"/>
+    </vehicle>
+    <vehicle id="ew0.99" type="FASTVEHTYPE" depart="560.41" departLane="best" departSpeed="random" route="!ew0.99!var#1" distance="0 1" speedFactor="0.7682" reroute="1" state="262326 561000 0 4.30 0 28.25 599000 0 0" pos="129.10 124.90 0.12" speed="0.12 0.12" angle="270.00" posLat="0.00" waitingTime="100000 1 11000 25000">
+        <device id="routing_ew0.99" state="0"/>
+    </vehicle>
+    <vehicle id="ns0.48" type="MEDVEHTYPE" depart="584.27" departLane="best" departSpeed="random" route="!ns0.48!var#1" distance="0 1" speedFactor="1.0749" reroute="1" state="262326 585000 0 4.30 0 1.22 599000 0 0" pos="183.25 179.05 8.78" speed="8.78 13.18" angle="180.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ns0.48" state="0"/>
+    </vehicle>
+    <vehicle id="ns0.49" type="FASTVEHTYPE" depart="587.53" departLane="best" departSpeed="random" route="!ns0.49!var#1" distance="0 1" speedFactor="0.9859" reroute="1" state="262326 588000 0 4.30 0 0.88 599000 0 0" pos="170.65 166.45 10.05" speed="10.05 13.91" angle="180.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ns0.49" state="0"/>
+    </vehicle>
+    <vehicle id="ns0.50" type="MEDVEHTYPE" depart="594.61" departLane="best" departSpeed="random" route="!ns0.50!var#1" distance="0 1" speedFactor="0.7575" reroute="1" state="262326 595000 0 4.30 0 0.61 599000 0 0" pos="47.10 42.90 12.62" speed="12.62 11.82" angle="180.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ns0.50" state="0"/>
+    </vehicle>
+    <vehicle id="nw0.21" type="MEDVEHTYPE" depart="580.76" departLane="best" departSpeed="random" route="!nw0.21!var#1" distance="0 1" speedFactor="0.9834" reroute="1" state="262326 581000 0 4.30 0 4.84 599000 0 0" pos="188.60 184.40 1.03" speed="1.03 4.38" angle="180.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_nw0.21" state="0"/>
+    </vehicle>
+    <vehicle id="se0.9" type="MEDVEHTYPE" depart="589.61" departLane="best" departSpeed="random" route="!se0.9!var#1" distance="0 1" speedFactor="1.2518" reroute="1" state="262326 590000 0 4.30 0 3.74 599000 0 0" pos="77.95 73.75 13.43" speed="13.43 13.76" angle="0.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_se0.9" state="0"/>
+    </vehicle>
+    <vehicle id="sn0.51" type="SLOWVEHTYPE" depart="564.32" departLane="best" departSpeed="random" route="!sn0.51!var#1" distance="0 1" speedFactor="0.9882" reroute="1" state="262326 565000 0 4.30 13000 17.54 599000 0 0" pos="188.60 184.40 0.00" speed="0.00 0.00" angle="0.00" posLat="0.00" waitingTime="100000 1 0 13000">
+        <device id="routing_sn0.51" state="0"/>
+    </vehicle>
+    <vehicle id="sn0.52" type="SLOWVEHTYPE" depart="583.48" departLane="best" departSpeed="random" route="!sn0.52!var#1" distance="0 1" speedFactor="0.9503" reroute="1" state="262326 584000 0 4.30 0 3.51 599000 0 0" pos="132.96 128.76 10.95" speed="10.95 10.27" angle="0.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_sn0.52" state="0"/>
+    </vehicle>
+    <vehicle id="sn0.53" type="MEDVEHTYPE" depart="584.97" departLane="best" departSpeed="random" route="!sn0.53!var#1" distance="0 1" speedFactor="1.2131" reroute="1" state="262326 585000 0 4.30 0 1.12 599000 0 0" pos="184.67 180.47 7.80" speed="7.80 10.84" angle="0.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_sn0.53" state="0"/>
+    </vehicle>
+    <vehicle id="sn0.54" type="MEDVEHTYPE" depart="592.07" departLane="best" departSpeed="random" route="!sn0.54!var#1" distance="0 1" speedFactor="0.9774" reroute="1" state="262326 593000 0 4.30 0 0.33 599000 0 0" pos="83.72 79.52 13.85" speed="13.85 13.23" angle="0.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_sn0.54" state="0"/>
+    </vehicle>
+    <vehicle id="we0.75" type="SLOWVEHTYPE" depart="520.58" departLane="best" departSpeed="random" route="!we0.75!var#1" distance="210.4 1" speedFactor="0.9730" reroute="1" state="262326 521000 1 4.30 0 43.31 599000 0 0" pos="182.40 178.20 10.65" speed="10.65 10.17" angle="90.00" posLat="0.00" waitingTime="100000 1 22000 58000">
+        <device id="routing_we0.75" state="0"/>
+    </vehicle>
+    <vehicle id="we0.77" type="MEDVEHTYPE" depart="529.21" departLane="best" departSpeed="random" route="!we0.77!var#1" distance="210.4 1" speedFactor="1.1113" reroute="1" state="262326 530000 1 4.30 0 42.65 599000 0 0" pos="162.73 158.53 10.21" speed="10.21 10.63" angle="90.00" posLat="0.00" waitingTime="100000 1 21000 53000">
+        <device id="routing_we0.77" state="0"/>
+    </vehicle>
+    <vehicle id="we0.78" type="SLOWVEHTYPE" depart="529.65" departLane="best" departSpeed="random" route="!we0.78!var#1" distance="210.4 1" speedFactor="1.1764" reroute="1" state="262326 530000 1 4.30 0 34.53 599000 0 0" pos="180.02 175.82 11.12" speed="11.12 11.19" angle="90.00" posLat="0.00" waitingTime="100000 1 22000 50000">
+        <device id="routing_we0.78" state="0"/>
+    </vehicle>
+    <vehicle id="we0.79" type="SLOWVEHTYPE" depart="530.03" departLane="best" departSpeed="random" route="!we0.79!var#1" distance="210.4 1" speedFactor="0.9712" reroute="1" state="262326 531000 1 4.30 0 35.46 599000 0 0" pos="158.30 154.10 10.33" speed="10.33 10.49" angle="90.00" posLat="0.00" waitingTime="100000 1 21000 47000">
+        <device id="routing_we0.79" state="0"/>
+    </vehicle>
+    <vehicle id="we0.80" type="MEDVEHTYPE" depart="541.84" departLane="best" departSpeed="random" route="!we0.80!var#1" distance="210.4 1" speedFactor="1.0352" reroute="1" state="262326 542000 1 4.30 0 32.28 599000 0 0" pos="139.98 135.78 11.05" speed="11.05 10.52" angle="90.00" posLat="0.00" waitingTime="100000 1 20000 42000">
+        <device id="routing_we0.80" state="0"/>
+    </vehicle>
+    <vehicle id="we0.81" type="SLOWVEHTYPE" depart="549.07" departLane="best" departSpeed="random" route="!we0.81!var#1" distance="210.4 1" speedFactor="1.1000" reroute="1" state="262326 550000 1 4.30 0 22.48 599000 0 0" pos="90.94 86.74 10.59" speed="10.59 10.48" angle="90.00" posLat="0.00" waitingTime="100000 1 18000 29000">
+        <device id="routing_we0.81" state="0"/>
+    </vehicle>
+    <vehicle id="we0.82" type="MEDVEHTYPE" depart="549.89" departLane="best" departSpeed="random" route="!we0.82!var#1" distance="210.4 1" speedFactor="1.1097" reroute="1" state="262326 550000 1 4.30 0 25.65 599000 0 0" pos="120.77 116.57 10.62" speed="10.62 11.04" angle="90.00" posLat="0.00" waitingTime="100000 1 19000 33000">
+        <device id="routing_we0.82" state="0"/>
+    </vehicle>
+    <vehicle id="we0.83" type="SLOWVEHTYPE" depart="550.29" departLane="best" departSpeed="random" route="!we0.83!var#1" distance="210.4 1" speedFactor="0.9799" reroute="1" state="262326 551000 1 4.30 0 20.93 599000 0 0" pos="97.13 92.93 10.56" speed="10.56 10.38" angle="90.00" posLat="0.00" waitingTime="100000 1 18000 28000">
+        <device id="routing_we0.83" state="0"/>
+    </vehicle>
+    <vehicle id="we0.84" type="MEDVEHTYPE" depart="556.59" departLane="best" departSpeed="random" route="!we0.84!var#1" distance="210.4 1" speedFactor="0.9001" reroute="1" state="262326 557000 1 4.30 0 22.14 599000 0 0" pos="71.98 67.78 9.75" speed="9.75 11.06" angle="90.00" posLat="0.00" waitingTime="100000 1 17000 27000">
+        <device id="routing_we0.84" state="0"/>
+    </vehicle>
+    <vehicle id="we0.85" type="MEDVEHTYPE" depart="559.90" departLane="best" departSpeed="random" route="!we0.85!var#1" distance="210.4 1" speedFactor="1.1324" reroute="1" state="262326 560000 1 4.30 0 18.68 599000 0 0" pos="78.43 74.23 10.63" speed="10.63 11.35" angle="90.00" posLat="0.00" waitingTime="100000 1 17000 22000">
+        <device id="routing_we0.85" state="0"/>
+    </vehicle>
+    <vehicle id="we0.86" type="MEDVEHTYPE" depart="567.01" departLane="best" departSpeed="random" route="!we0.86!var#1" distance="210.4 1" speedFactor="1.0869" reroute="1" state="262326 568000 1 4.30 0 12.05 599000 0 0" pos="59.17 54.97 11.81" speed="11.81 10.10" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_we0.86" state="0"/>
+    </vehicle>
+    <vehicle id="we0.87" type="MEDVEHTYPE" depart="570.06" departLane="best" departSpeed="random" route="!we0.87!var#1" distance="210.4 1" speedFactor="1.2395" reroute="1" state="262326 571000 1 4.30 0 10.49 599000 0 0" pos="39.02 34.82 10.73" speed="10.73 9.91" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_we0.87" state="0"/>
+    </vehicle>
+    <vehicle id="we0.88" type="FASTVEHTYPE" depart="576.82" departLane="best" departSpeed="random" route="!we0.88!var#1" distance="210.4 1" speedFactor="1.0288" reroute="1" state="262326 577000 1 4.30 0 8.84 599000 0 0" pos="19.66 15.46 9.78" speed="9.78 11.78" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_we0.88" state="0"/>
+    </vehicle>
+    <vehicle id="we0.89" type="MEDVEHTYPE" depart="578.05" departLane="best" departSpeed="random" route="!we0.89!var#1" distance="189.6 1" speedFactor="0.9717" reroute="1" state="262326 579000 0 4.30 0 5.57 599000 0 0" pos="16.74 12.54 8.12" speed="8.12 6.57" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_we0.89" state="0"/>
+    </vehicle>
+    <vehicle id="we0.90" type="FASTVEHTYPE" depart="581.04" departLane="best" departSpeed="random" route="!we0.90!var#1" distance="210.4 1" speedFactor="0.9658" reroute="1" state="262326 582000 1 4.30 0 4.15 599000 0 0" pos="0.83 17.43 11.81" speed="11.81 9.70" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_we0.90" state="0"/>
+    </vehicle>
+    <vehicle id="we0.91" type="MEDVEHTYPE" depart="586.32" departLane="best" departSpeed="random" route="!we0.91!var#1" distance="0 1" speedFactor="1.0881" reroute="1" state="262326 587000 0 4.30 0 0.67 599000 0 0" pos="162.86 158.66 13.57" speed="13.57 13.31" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_we0.91" state="0"/>
+    </vehicle>
+    <vehicle id="we0.92" type="MEDVEHTYPE" depart="595.61" departLane="best" departSpeed="random" route="!we0.92!var#1" distance="0 1" speedFactor="0.8758" reroute="1" state="262326 596000 0 4.30 0 0.16 599000 0 0" pos="44.04 39.84 13.75" speed="13.75 12.97" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_we0.92" state="0"/>
+    </vehicle>
+    <vehicle id="ws0.18" type="MEDVEHTYPE" depart="530.31" departLane="best" departSpeed="random" route="!ws0.18!var#1" distance="198.63 1" speedFactor="0.8288" reroute="1" state="262326 532000 1 4.30 0 40.00 599000 0 0" pos="171.67 167.47 13.27" speed="13.27 12.74" angle="180.00" posLat="0.00" waitingTime="100000 1 20000 50000">
+        <device id="routing_ws0.18" state="0"/>
+    </vehicle>
+    <vehicle id="ws0.19" type="SLOWVEHTYPE" depart="539.15" departLane="best" departSpeed="random" route="!ws0.19!var#1" distance="198.63 1" speedFactor="1.2092" reroute="1" state="262326 540000 1 4.30 0 30.36 599000 0 0" pos="121.33 117.13 10.54" speed="10.54 11.03" angle="180.00" posLat="0.00" waitingTime="100000 1 19000 41000">
+        <device id="routing_ws0.19" state="0"/>
+    </vehicle>
+    <vehicle id="ws0.20" type="SLOWVEHTYPE" depart="561.19" departLane="best" departSpeed="random" route="!ws0.20!var#1" distance="198.63 1" speedFactor="1.0540" reroute="1" state="262326 562000 1 4.30 0 14.63 599000 0 0" pos="52.34 48.14 10.43" speed="10.43 10.90" angle="180.00" posLat="0.00" waitingTime="100000 1 16000 21000">
+        <device id="routing_ws0.20" state="0"/>
+    </vehicle>
+    <vehicle id="ws0.21" type="MEDVEHTYPE" depart="561.47" departLane="best" departSpeed="random" route="!ws0.21!var#1" distance="198.63 1" speedFactor="0.9817" reroute="1" state="262326 563000 1 4.30 0 19.61 599000 0 0" pos="27.97 23.77 10.64" speed="10.64 9.27" angle="180.00" posLat="0.00" waitingTime="100000 1 14000 19000">
+        <device id="routing_ws0.21" state="0"/>
+    </vehicle>
+    <vehicle id="ws0.22" type="MEDVEHTYPE" depart="587.78" departLane="best" departSpeed="random" route="!ws0.22!var#1" distance="0 1" speedFactor="0.9284" reroute="1" state="262326 588000 0 4.30 0 1.22 599000 0 0" pos="141.18 136.98 13.15" speed="13.15 13.11" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ws0.22" state="0"/>
+    </vehicle>
+    <vehicle id="ws0.23" type="MEDVEHTYPE" depart="591.09" departLane="best" departSpeed="random" route="!ws0.23!var#1" distance="0 1" speedFactor="1.1162" reroute="1" state="262326 592000 0 4.30 0 0.20 599000 0 0" pos="99.55 95.35 13.88" speed="13.88 13.41" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ws0.23" state="0"/>
+    </vehicle>
+    <vehicle id="ws0.24" type="MEDVEHTYPE" depart="594.18" departLane="best" departSpeed="random" route="!ws0.24!var#1" distance="0 1" speedFactor="1.1088" reroute="1" state="262326 595000 0 4.30 0 0.21 599000 0 0" pos="57.31 53.11 13.85" speed="13.85 12.91" angle="90.00" posLat="0.00" waitingTime="100000 0">
+        <device id="routing_ws0.24" state="0"/>
+    </vehicle>
+    <flowState id="ew0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.17)" next="600.26" end="600.00" route="!ew0" done="109" index="109" reroute="1"/>
+    <flowState id="en0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.06)" next="655.58" end="600.00" route="!en0" done="35" index="35" reroute="1"/>
+    <flowState id="es0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.02)" next="652.39" end="600.00" route="!es0" done="16" index="16" reroute="1"/>
+    <flowState id="we0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.17)" next="601.57" end="600.00" route="!we0" done="93" index="93" reroute="1"/>
+    <flowState id="wn0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.02)" next="654.14" end="600.00" route="!wn0" done="12" index="12" reroute="1"/>
+    <flowState id="ws0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.06)" next="624.39" end="600.00" route="!ws0" done="25" index="25" reroute="1"/>
+    <flowState id="ns0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.09)" next="600.70" end="600.00" route="!ns0" done="51" index="51" reroute="1"/>
+    <flowState id="ne0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.01)" next="712.61" end="600.00" route="!ne0" done="10" index="10" reroute="1"/>
+    <flowState id="nw0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.03)" next="602.60" end="600.00" route="!nw0" done="22" index="22" reroute="1"/>
+    <flowState id="sn0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.09)" next="605.76" end="600.00" route="!sn0" done="55" index="55" reroute="1"/>
+    <flowState id="se0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.03)" next="607.00" end="600.00" route="!se0" done="10" index="10" reroute="1"/>
+    <flowState id="sw0" type="td_0" begin="0.00" departLane="best" departSpeed="random" period="exp(0.01)" next="784.37" end="600.00" route="!sw0" done="7" index="7" reroute="1"/>
+    <flowState id="ew1" type="td_0" begin="600.00" departLane="best" departSpeed="random" period="exp(0.17)" next="4.39" end="15000.00" route="!ew1" done="0" index="0" reroute="1"/>
+    <lane id=":JC_7_0">
+        <vehicles value="es0.10"/>
+    </lane>
+    <lane id=":JC_13_0">
+        <vehicles value="we0.89"/>
+    </lane>
+    <lane id="E_E_in_0">
+        <vehicles value="ew0.107 en0.34 ew0.104 ew0.102 ew0.100 en0.33"/>
+    </lane>
+    <lane id="E_E_in_1">
+        <vehicles value="ew0.108 ew0.106 ew0.105 ew0.103 ew0.101 ew0.99 ew0.98 ew0.97 ew0.95 es0.15 es0.14 es0.13 es0.12 es0.11 ew0.87"/>
+    </lane>
+    <lane id="E_E_out_0">
+        <vehicles value="ew0.96 ew0.94 ew0.93 ew0.92 ew0.91 ew0.90"/>
+    </lane>
+    <lane id="E_N_in_0">
+        <vehicles value="ns0.49 nw0.21"/>
+    </lane>
+    <lane id="E_N_in_1">
+        <vehicles value="ns0.50 ns0.48"/>
+    </lane>
+    <lane id="E_N_out_0">
+        <vehicles value="ws0.21 ws0.20 ws0.19 ws0.18"/>
+    </lane>
+    <lane id="E_S_in_0">
+        <vehicles value="se0.9 sn0.52 sn0.51"/>
+    </lane>
+    <lane id="E_S_in_1">
+        <vehicles value="sn0.54 sn0.53"/>
+    </lane>
+    <lane id="E_S_out_0">
+        <vehicles value="en0.32 en0.31 en0.30"/>
+    </lane>
+    <lane id="E_W_in_0">
+        <vehicles value="ws0.24 ws0.23 ws0.22 we0.91"/>
+    </lane>
+    <lane id="E_W_in_1">
+        <vehicles value="we0.92"/>
+    </lane>
+    <lane id="E_W_out_0">
+        <vehicles value="we0.84 we0.81 we0.77 we0.75"/>
+    </lane>
+    <lane id="E_W_out_1">
+        <vehicles value="we0.90 we0.88 we0.87 we0.86 we0.85 we0.83 we0.82 we0.80 we0.79 we0.78"/>
+    </lane>
+    <tlLogic id="0" programID="0" phase="0" duration="60000"/>
+    <tlLogic id="0" programID="1" phase="2" duration="10000"/>
+    <tlLogic id="0" programID="2" phase="2" duration="22000"/>
+    <tlLogic id="0" programID="online" phase="0" duration="1000"/>
+</snapshot>
