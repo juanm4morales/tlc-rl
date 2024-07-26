@@ -14,7 +14,7 @@ Adicionalmente, muchas ciudades utilizan semáforos con programaciones estática
 
 Una forma de abordar este problema es mediante el *framework* del *Reinforcement Learning* (aprendizaje por refuerzo). En este contexto, el controlador de semáforos actúa como un agente que interactúa con un entorno (escenario de tráfico) a través de cciones. Estas acciones son seleccionadas en función del *estado* actual del entorno (tráfico) y una recompensa proporcionada por este. La recompensa es un valor numérico que indica cuán efectiva fue la acción elegida.
 
-En este trabajo, se utilizó un simulador de tráfico para modelar el entorno (tráfico en intersección de avenidas). Posteriormente, se entrenó al controlador de semáforos empleando el algoritmo Q-Learning. El objetivo fué optimizar la gestión del tráfico en comparación con los semáforos de ciclo fijo, específicamente reducir el tiempo de espera promedio de todos los vehículos que ingresaron a la intersección.
+En este trabajo, se utilizó un simulador de tráfico para modelar el entorno (tráfico en intersección de avenidas). Y luego, se entrenó al controlador de semáforos empleando el algoritmo Deep Q-Learning. El objetivo fué optimizar la gestión del tráfico en comparación con los semáforos de ciclo fijo, específicamente reducir el tiempo de espera promedio de todos los vehículos que ingresaron a la intersección.
 
 ## Marco teórico
 
@@ -81,6 +81,8 @@ Esta se llama **ecuación de optimalidad de Bellman** y es la base del algoritmo
 $$ Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha \left[ R_{t+1} + \gamma \max_{a} Q_*(S_{t+1},a) - Q(S_t, A_t) \right].$$
 
 Donde $\alpha$ es la *tasa de aprendizaje*, un parámetro que controla la rapidez con la que los valores de $Q$ convergen hacia los óptimos. Este proceso se repite hasta que los valores de $Q$ converjan o hasta que se alcance un cierto número de iteraciones.
+
+### Deep Q-Network
 
 ### Terminología: tráfico
 
@@ -495,221 +497,18 @@ En esta sección, se presentan los resultados tanto de la exploración de hiper-
 ### Exploración de hiper-parámetros
 En esta subsección, exploramos y seleccionamos los hiper-parámetros más adecuados para nuestro sistema. Estos fueron determinados mediante una base empírica y/o analítica sobre nuestro **escenario balanceado**. Para ajustar cada uno de los hiper-parámetros se fijaron, de forma arbitraria, los demás (que no hayan sido evaluados).
 
-
-#### Información del Estado
-
-De forma experimental, se observó el proceso de aprendizaje del agente utilizando un parámetro indicador de la información que debe proporcionar el entorno. Se emplearon dos métricas para evaluar el rendimiento: el tiempo de espera promedio (en segundos) y el tiempo transcurrido (en ejecución) en cada episodio.
-
-Para los entrenamientos, se fijaron los valores de los siguientes parámetros:
-
-- $episodes = 100$. (Cantidad de episodios).
-- $discrete\_intervals=4$. (Intervalos a codificar).
-- $reward\_fn=diff\_waitingTime$. (Función de recompensa).
-- $starting\_\epsilon=1$. ($\epsilon$ inicial)
-- $decay\_rate=0.04$. (Factor de caída exponencial).
-
-Los posibles valores del hiper-parámetro a evaluar son:
-
-- $lane\_info = waitingTime$. Sumatoria de los **tiempos de espera** de vehículos, por carril.
-
-- $lane\_info = halted$. Cantidad de **vehículos detenidos**, por carril
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="MWTparamsLaneInfo_100ep">
-  <img src="./images/MWTparamsLaneInfo_100ep.png" alt="MWTparamsLaneInfo_100ep." height="auto" width="800">
-  <p><i>Figura 13:</i> Tiempo de espera promedio durante aprendizaje, por episodio y para distintos valores del parámetro <i>lane_info</i>.</p>
-</div>
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="EEparamsLaneInfo_100ep">
-  <img src="./images/EEparamsLaneInfo_100ep.png" alt="EEparamsLaneInfo_100ep." height="auto" width="800">
-  <p><i>Figura 14:</i> Tiempo de ejecución transcurrido por episodio, y para distintos valores del parámetro <i>lane_info</i>.</p>
-</div>
-
-Con los resultado obtenidos de la [Figura 13](#MWTparamsLaneInfo_100ep), se puede observar una convergencia más veloz al utilizar como información los tiempos de espera. Sin embargo, esto no indica una clara superioridad durante el momento de aprendizaje, ya que existe la posibilidad de que los parámetros fijados no "sintonizen" (no sean los más apropiados, en otras palabras) con el valor "halted". Ya que nuestra métrica principal es el tiempo de espera promedio, y como se puede ver en la [Figura 14](#EEparamsLaneInfo_100ep) el tiempo de cómputo decrece más rápido con $lane\_info=waitingTime$, escogimos este valor para entrenar al agente Q-Learning.
-
-#### Función de Recompensa
-
-A continuación se presentan los resultados obtenidos al comparar distintas funciones de recompensa en el agente. Se evaluó la recompensa acumulada, el tiempo de espera medio y el tiempo necesario para computar cada episodio bajo cada una de las funcines de recompensa propuestas. Estos resultados fueron fundamentales para determinar cuál función de recompensa es más apropiada para optimizar el desempeño del agente.
-
-Se fijaron los valores de los siguientes parámetros:
-
-- $lane\_info=waitingTime$
-- $episodes = 50$. (Cantidad de episodios).
-- $discrete\_intervals=4$. (Intervalos a codificar).
-- $starting\_\epsilon=1$. ($\epsilon$ inicial)
-- $decay\_rate=0.05$. (Factor de caída exponencial).
-
-Los funciones de recompensa propuestas son:
-
-- $reward\_fn = diff\_halted$. Cambio en la cantidad de vehículos detenidos.
-
-- $reward\_fn = diff\_waitingTime$. Cambio en los tiempos de espera.
-
-- $reward\_fn = diff\_cumulativeWaitingTime$. Cambio en los tiempos de espera acumulados.
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="CRparamsRewardFn_50ep">
-  <img src="./images/CRparamsRewardFn_50ep.png" alt="CRparamsRewardFn_50ep." height="auto" width="800">
-  <p><i>Figura 15:</i> Recompensa acumulada a través de los episodios, para las distintas funciones de recompensa.</p>
-</div>
-
-Como se mencionó en la sección [Observación sobre la recompensa acumulada](#ObservacionSobreLaRecompensaAcumulada), usando la función de recompensa $diff\_waitingTime$ se puede observar  una situación aproximada en la [Figura 15](#CRparamsRewardFn_50ep), dónde la recompensa acumulada oscila alrededor de 0. Esta oscilación se produce debido a la implementación de la metodología descrita en la sección [Diseño del flujo de tráfico](#DiseniodelFlujoDeTrafico), usada para atenuar el comportamiento de anulación de la recompensa acumulada. Por esta razón se propuso una tercera función de recompensa, la diferencia en los tiempos de espera acumulados de los vehículos (*diff_cumulativeWaitingTime*). De esta forma es posible interpretar mejor el aprendizaje a través de los episodios mediante la función de recompensa acumulada. La recompensa acumulada para esta función de recompensa crece hasta acercarse al 0 desde los negativos.
-
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="MWTparamsRewardFn_50ep">
-  <img src="./images/MWTparamsRewardFn_50ep.png" alt="MWTparamsRewardFn_50ep" width="12000">
-  <p><i>Figura 16</i>: Evolución de los tiempos de espera promedio (en segundos), para las distintas funciones de recompensa.</p>
-</div>
-
-Las 3 funciones de recompensa tienen una curva de disminución similar respecto al tiempo de espera promedio, como muestra la [Figura 16](#MWTparamsRewardFn_50ep). En la "ventana" de los 50 episodios y en esta ejecución en particular, *diff_cumulativeWaitingTime* y *diff_waitingTime* se aproximan a un óptimo (mínimo) ligeramente mejor que al usar *diff_Halted*. Para la elección de la/s función/es de recompensa más apropiadas, también se tuvo en cuenta el tiempo de ejecución de cada episodio.
-
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="MWTparamsRewardFn_50ep">
-  <img src="./images/EEparamsRewardFn_50ep.png" alt="MWTparamsRewardFn_50ep" width="12000">
-  <p><i>Figura 17:</i>. Tiempo (en segundos) transcurrido durante cada episodio, para las distintas funciones de recompensa.</p>
-</div>
-
-Al utilizar la función de recompensa *diff_cumulativeWaitingTime*, se realizan muchas comunicaciones con SUMO para obtener los tiempos de espera acumulados de cada vehículo, y eso teniendo en cuenta que cada vehículo tiene asignada una memoria máxima de 100 segundo. Esto repercute enormemente en los tiempos de cálculo, como se puede ver en la [Figura 17](). En la [Tabla 6](#elapsedTimeTrainingRewardFn) vemos que el tiempo requerido para computar el entrenamiento con *diff_cumulativeWaitingTime* es aproximadamente 1.91 veces más grande que para *diff_waitingTime*. Es debido a esta demanda computacional que nos decantamos por utilizar principalmente $reward\_fn = diff\_waitingTime$.
-
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="elapsedTimeTrainingRewardFn">
-  <br>
-  <p><i>Tabla 6:</i> Tiempos requeridos para computar el entrenamiento del agente.</p>
-</div>
-
-| ID de función de recompensa | Tiempo requerido para entrenar al agente |
-| ----------------------------| ---------------------------------------- |
-| diff_halted                 | 1801.136 |
-| diff_waitingTime            | 1775.142 |
-| diff_cumulativeWaitingTime  | 3400.089 |
-
-
-#### $\epsilon$ inicial, $\epsilon$ final y factor de caída exponencial de $\epsilon$
-
-Hemos observado el comportamiento de tres parámetros fundamentales para la estrategia de exploración $\epsilon$-greedy: $\epsilon$ inicial, $\epsilon$ final y el factor de caída exponencial de $\epsilon$.
-
-Utilizamos los valores 1.0 y 0.8 para el parámetro $\epsilon$ inicial, y para $\epsilon$ final fijamos un valor cercano a 0, específicamente 0.005. También combinamos esta configuración con dos valores distintos para el factor de caída exponencial. Realizamos el entrenamiento durante 100 episodios y los resultados fueron los esperados: tanto un factor de caída exponencial más bajo como un $\epsilon$ inicial más grande permiten una mayor exploración al comienzo. 
-
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="MWTparamsRewardFn_50ep">
-  <img src="./images/MWTEpsilonParams_100ep.png" alt="MWTparamsRewardFn_50ep" width="12000">
-  <p><i>Figura 18</i>: Resultados del tiempo de espera promedio (en segundos), para la combinatoria entre los parámetros <i>epsilon-inicial</i> y <i>factor de caída exponencial</i> .</p>
-</div>
-
-El valor $\epsilon$ decae durante el entrenamiento con un comportamiento exponencial. Para esto hacemos uso del factor de caída exponencial. Para ajustar este parámetro, es importante tener en cuenta la cantidad de episodios de entrenamiento. Para nuestra exploración de parámetros, en la mayoría de las ejecuciones utilizamos 50 episodios. En la [Figura 19](#expEpsilonDecay_50ep) podemos ver como decae $\epsilon$ para distintos valores de este factor, con 50 episodios. En este caso, si nuestra intención es explorar bastante, pero en los últimos episodios explotar al máximo el conocimiento adquirido resulta apropiado usar un factor de caída de 0.075. En la [Figura 20](#expEpsilonDecay_200ep) vemos este decaimiento para otros valores del factor y utilizando 200 episodios de entrenamiento.
-
-
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="expEpsilonDecay_50ep">
-  <img src="./images/expEpsilonDecay_50ep.png" alt="Epsilon Exponential Decay - 50 eps." height="auto" width="800">
-  <p><i>Figura 19:</i> Caída de epsilon utilizando distintos factores de caída exponencial, sobre 50 episodios.</p>
-</div>
-
-<br>
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="expEpsilonDecay_200ep">
-  <img src="./images/expEpsilonDecay_200ep.png" alt="Epsilon Exponential Decay - 200 eps." height="auto" width="800">
-  <p><i>Figura 20:</i> Caída de epsilon utilizando distintos factores de caída exponencial, sobre 200 episodios.</p>
-</div>
+#### Factor de eploración
 
 #### Intervalos de codificación
 
-La cantidad de intervalos que se esperan mapear, para representar los distintos estados, se indican con el parámetro $encode\_interval$. En la [Figura 21]() se observa como afecta a la convergencia de una política que maximize las recompensas, mediante la métrica de **tiempos de espera promedio**. 
-
-Para el análisis de este hiper-parámetro, se fijaron los siguientes:
-
-- $lane\_info=waitingTime$
-- $reward\_fn=diff_waitingTime$
-- $episodes = 50$. (Cantidad de episodios).
-- $starting\_\epsilon=1$. ($\epsilon$ inicial)
-- $decay\_rate=0.025$. (Factor de caída exponencial).
-
-Los valores de $encode\_interval$ propuestas son: 4, 6, 8, 10 y 14.
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="expEpsilonDecay_200ep">
-  <img src="./images/MWTEncodeInt_50ep.png" alt="Epsilon Exponential Decay - 200 eps." height="auto" width="1200">
-  <p><i>Figura 21:</i> Evolución de los tiempos de espera promedio durante 50 episodios, para los distintos valores de <i>encode_interval</i>.</p>
-</div>
-
-Mientrás mayor sea $encode\_interval$, más lenta es la convergencia, ya que mayor se vuelve la Q-table y requiere más tiempo explorar los posibles estados que se pueden presentar. En sólo 50 episodios, no se puede ver que tanto se acerca a un mejor tiempo de espera promedio. Para eso ampliaremos la cantidad a 125, observando solo los resultados de usar el valor 4 y 14 (el más chico y el más grande). El resultado de ambas ejecuciones se observa en la [Figura 22](#MWTEncodeInt_4_14_125ep), dónde se observa que sólo con el valor 4 se llega a una cota inferior respecto al tiempo de espera promedio. Al agente con $encode\_interval = 14$ lo entrenamos hasta llegar a los 200 episodios ([Figura 23](#MWTEncodeInt_14_200ep)).
-
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="MWTEncodeInt_4_14_125ep">
-  <img src="./images/MWTEncodeInt_4_14_125ep.png" alt="MWTEncodeInt_4_14_125ep" height="auto" width="1200">
-  <p><i>Figura 22:</i> Evolución de los tiempos de espera promedio durante 125 episodios, para <i>encode_interval</i> igual a 4 e igual a 14.</p>
-</div>
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="MWTEncodeInt_14_200ep">
-  <img src="./images/MWTEncodeInt_14_200ep.png" alt="MWTEncodeInt_14_200ep" height="auto" width="600">
-  <p><i>Figura 23:</i> Evolución de los tiempos de espera promedio durante 200 episodios, para <i>encode_interval</i> = 14.</p>
-</div>
-
-La cota inferior alcanzada por el agente con $encode_interval = 4$ es de aproximadamente 1.82 segundos de tiempo de espera promedio (específicamente en el episodio 125). Por otro lado, la cota inferior alcanzada por el agente con $encode_interval = 14$ es de aproximadamente 1.42 segundos de tiempo de espera promedio (específicamente en el episodio 200). Utilizar un $encode_interval$ más alto retrasa la convergencia, pero a largo plazo obtiene un tiempo de espera promedio ligeramente inferior. Dado que la ejecución de un episodio en la simulación requiere un tiempo considerable, hemos optado por un valor intermedio, específicamente $encode_interval = 10$.
 
 #### Learning Rate $\alpha$
 
-El *learning rate* debe seleccionarse cuidadosamente para asegurar que la convergencia no sea ni demasiado lenta ni demasiado rápida, de modo que el modelo pueda adaptarse eficazmente a entornos cambiantes. Un learning rate demasiado alto puede provocar un comportamiento errático, resultando en grandes oscilaciones en el proceso de aprendizaje. 
-
-Para el análisis de este hiper-parámetro, se fijaron los siguientes:
-
-- $lane\_info=waitingTime$
-- $reward\_fn=diff\_waitingTime$
-- $episodes = 100$.
-- $encode\_interval = 4$. 
-- $starting\_\epsilon=1$. 
-- $decay\_rate=0.02$.
-
-Los valores de $learning\_rate$ propuestos son: 0.1, 0.01 y 0.001.
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="MWTparams_lr_100ep">
-  <img src="./images/MWTparams_lr_100ep.png" alt="MWTparams_lr_100ep." width="1200" height="auto">
-  <p><i>Figura 24:</i> Evolución de los tiempos de espera promedio durante 100 episodios, para distintos <i>learning rates</i>.</p>
-</div>
-
-Observando la [Figura 24](#MWTparams_lr_100ep), vemos que con $learning\_rate = 0.1$ la convergencia es muy rápida y con $learning\_rate = 0.01$ ocurre lo contrario. De forma arbitraria, y con el fin de no extender demasiado el tiempo de entrenamiento, se eligió $learning\_rate = 0.01$.
 
 
 ### Resultados del agente final
 
-Con los siguientes hiper-parámetros configurados:
-
-- $lane\_info=waitingTime$,
-- $reward\_fn=diff\_waitingTime$,
-- $episodes = 200$,
-- $encode\_interval = 10$,
-- $yellow\_time = 4$,
-- $delta\_time = 5$,
-- $starting\_\epsilon=1$,
-- $ending\_\epsilon=0.005$,
-- $decay\_rate=0.02$,
-- $learning\_rate=0.01$,
-- y $discount\_factor=0.99$
-
-entrenamos a nuesto agente Q-learning para estimar la política óptima para gestionar el tráfico de una intersección, mediante semáforos. 
-
 #### Escenario desbalanceado
-
-Se realizaron 15 ejecuciones de entrenamiento del agente sobre el entorno desbalanceado y se obtuvieron la **media** y **desviación estándar** para cada episodio, en cada una de las 3 métricas planteadas.
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="MWTPerEpisode">
-  <img src="./images/MeanWaitingTimePerEpisode.png" alt="MWTPerEpisode" width="800" height="auto">
-  <p><i>Figura 25:</i> Tiempo de espera promedio (en segundos) del agente Q-Learning, sobre 200 episodios, sobre un escenario desbalanceado. Se muestran la media y desviación estándar de las 15 ejecuciones de entrenamiento.</p>
-</div>
-
-La [Figura 25](MWTPerEpisode) muestra como, a partir del episodio 150, el tiempo de espera promedio, disminuye a lo que parece su límite inferior de la métrica. La figura demuestra que el agente Q-learning a logrado conocer una política de gestión de tráfico bastante superior a que la que utiliza en los primeros episodios (simulaciones).
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="CRPerEpisode">
-  <img src="./images/CRPerEpisode.png" alt="CRPerEpisode" width="800" height="auto">
-  <p><i>Figura 26:</i> Recompensa acumulada del agente Q-Learning, sobre 200 episodios, sobre un escenario desbalanceado. Se muestran la media y desviación estándar de las 15 ejecuciones de entrenamiento.</p>
-</div>
-
-Como se mencionó previamente, en la [Figura 26](CRPerEpisode) se observa como la recompensa oscila bruscamente alrededor del 0. A medida que transcurren los episodios, la amplitud de esta oscilación disminuye, lo cual demuestra junto al gráfico anterior, que utilizando la función de recompensa de la **diferencia de la suma en los tiempos de espera**, la recompensa acumulada tiende a estabilizarse hacia el 0. Sin embargo, por la naturaleza de esta función de recompensa, esta métrica no nos resultó útil para evaluar el rendimiento de este sistema en particular.
-
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;" id="EEPerEpisode">
-  <img src="./images/EEPerEpisode.png" alt="EEPerEpisode" width="800" height="auto">
-  <p><i>Figura 27:</i> Tiempo transcurrido del agente Q-Learning, sobre 200 episodios, sobre un escenario desbalanceado. Se muestran la media y desviación estándar de las 15 ejecuciones de entrenamiento.</p>
-</div>
-
-
-En la [Figura 27](EEPerEpisode) se observa una característica inherente del simulador SUMO: una alta demanda de recursos computacionales cuando se simulan muchos vehículos simultáneamente. Esta demanda limita el desempeño de nuestro sistema de *Reinforcement Learning*, incluso al utilizar una función de recompensa que no requiere tanto cómputo. Adicionalmente, se puede observar que a medida que el agente mejora su rendimiento y gestiona mejor el flujo de vehículos, el simulador ejecuta sus tareas de manera más eficiente.
 
 #### Escenario balanceado
 
