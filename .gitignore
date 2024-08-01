@@ -1,3 +1,5 @@
 /.venv
 /tripinfo.xml
 /tscRL.egg-info
+code/tscRL/agents/__pycache__/callbacks.cpython-312.pyc
+code/tscRL/agents/__pycache__/dqn_agent.cpython-312.pyc
