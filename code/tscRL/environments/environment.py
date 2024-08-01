@@ -255,6 +255,7 @@ class SumoEnvironment(gym.Env):
             sumoCMD.append("--no-warnings")
         if self.gui:
             sumoCMD.append("-S")
+            sumoCMD.append("--quit-on-end")
         
         try:
             traci.start(sumoCMD)

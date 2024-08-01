@@ -10,10 +10,11 @@ class CustomMetricsCallback(BaseCallback):
         super().__init__(verbose)
         self.total_waiting_times = 0
         self.total_acc_waiting_times = 0
+        self.total_losses = 0
         self.cumulative_reward = 0
         self.step = 0
         self.episode = 0
-        self.metrics = {"episode": [], "mean_waiting_time": [], "mean_acc_waiting_time": [], "cumulative_reward":[], "time": []}
+        self.metrics = {"episode": [], "mean_waiting_time": [], "mean_acc_waiting_time": [], "cumulative_reward":[], "time": [], "loss_value": []}
         self.episode_start_time = 0
         
     def _on_training_start(self) -> None:
@@ -24,6 +25,7 @@ class CustomMetricsCallback(BaseCallback):
         mean_acc_waiting_time_step = self.locals['infos'][0]['mean_acc_waiting_time']
         self.total_waiting_times += mean_waiting_time_step
         self.total_acc_waiting_times += mean_acc_waiting_time_step
+        
         
         done = self.locals['dones'][0]
         self.cumulative_reward += self.locals['rewards'][0]
@@ -45,6 +47,8 @@ class CustomMetricsCallback(BaseCallback):
         episode_time = episode_end_time - self.episode_start_time
         self.metrics["time"].append(episode_time)
         
+        self.metrics["loss_value"].append(self.model.logger.name_to_value.get('train/loss'))
+        
         self.step = 0
         self.total_waiting_times = 0
         self.total_acc_waiting_times = 0
@@ -60,6 +64,7 @@ class CustomMetricsCallback(BaseCallback):
         
     def get_metrics(self):
         return self.metrics
+    
 
 class TrialEvalCallback(EvalCallback):
     """Callback used for evaluating and reporting a trial."""
@@ -105,6 +110,7 @@ class TrialCallback(BaseCallback):
         rewards_window_size: int,
         min_trial_fract: float,
         verbose: int = 0,
+        max_trial_time: int = 2700,
         prune: bool = True
     ):
         super().__init__(verbose)
@@ -116,6 +122,8 @@ class TrialCallback(BaseCallback):
         self.is_pruned = False
         assert(min_trial_fract>=0 and min_trial_fract<=1)
         self.min_episodes_trial = int(min_trial_fract * n_eval_episodes)
+        self.max_trial_time = max_trial_time
+        self.initial_time = time()
 
     def _on_step(self) -> bool:
         done = self.locals['dones'][0]
@@ -130,12 +138,18 @@ class TrialCallback(BaseCallback):
     def _on_episode_end(self):
         self.last_cumulative_rewards.append(self.cumulative_reward)
         mean_last_cr = sum(self.last_cumulative_rewards)/len(self.last_cumulative_rewards)
-        
-        if (self.episode >= self.min_episodes_trial):
-            self.trial.report(mean_last_cr, self.episode)
-            if self.trial.should_prune() and self.prune:
+        if (self.verbose):
+            print("Trial " + str(self.trial.number) + " - Episode " + str(self.episode) + " finished" )
+            
+        self.trial.report(mean_last_cr, self.episode)
+        if self.prune:
+            if (time()-self.initial_time) > self.max_trial_time:
                 self.is_pruned = True
                 return False
+            if (self.episode >= self.min_episodes_trial):
+                if self.trial.should_prune():
+                    self.is_pruned = True
+                    return False
         
         
 

@@ -30,19 +30,20 @@ class FixedTLAgent:
             step = 0
             done = False
             cumulativeReward = 0
-            meanWaitingTimeSum = 0
+            meanAccWaitingTimeSum = 0
             while not done:
-                newState, reward, done, info = self.environment.step()
+                newState, reward, _, done, info = self.environment.step()
                 cumulativeReward = cumulativeReward + reward
-                meanWaitingTimeSum += info["mean_waiting_time"]
+                meanAccWaitingTimeSum += info["mean_acc_waiting_time"]
                 if done:
                     break        
                 self.currentState = newState
                 step += 1
                 
+                
             self.environment.reset()
-            meanWaitingTime = meanWaitingTimeSum/step
-            metrics.append({"episode": episode, "cumulative_reward": cumulativeReward, "mean_waiting_time": meanWaitingTime})
+            meanAccWaitingTimeSum = meanAccWaitingTimeSum/step
+            metrics.append({"episode": episode, "cumulative_reward": cumulativeReward, "mean_acc_waiting_time": meanAccWaitingTimeSum})
             
         self.environment.close()
         return metrics
