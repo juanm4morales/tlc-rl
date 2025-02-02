@@ -1,5 +1,6 @@
 from time import time
 from collections import deque
+import numpy as np
 import optuna
 import gymnasium as gym
 from stable_baselines3.common.callbacks import BaseCallback, EvalCallback
@@ -8,24 +9,22 @@ class CustomMetricsCallback(BaseCallback):
     
     def __init__(self, verbose=0):
         super().__init__(verbose)
-        self.total_waiting_times = 0
-        self.total_acc_waiting_times = 0
+        #self.total_acc_waiting_times = 0
         self.total_losses = 0
         self.cumulative_reward = 0
         self.step = 0
         self.episode = 0
-        self.metrics = {"episode": [], "mean_waiting_time": [], "mean_acc_waiting_time": [], "cumulative_reward":[], "time": [], "loss_value": []}
+        self.arrivalCWT = []
+        self.metrics = {"episode": [], "mean_acc_waiting_time": [], "cumulative_reward":[], "time": [], "loss_value": [], "waiting_time_95p":[]}
         self.episode_start_time = 0
         
     def _on_training_start(self) -> None:
         self.episode_start_time = time()
 
     def _on_step(self) -> bool:
-        mean_waiting_time_step = self.locals['infos'][0]['mean_waiting_time']
-        mean_acc_waiting_time_step = self.locals['infos'][0]['mean_acc_waiting_time']
-        self.total_waiting_times += mean_waiting_time_step
-        self.total_acc_waiting_times += mean_acc_waiting_time_step
-        
+        #mean_acc_waiting_time_step = self.locals['infos'][0]['mean_acc_waiting_time']
+        self.arrivalCWT += self.locals['infos'][0]['arrival_acc_waiting_times']
+        #self.total_acc_waiting_times += mean_acc_waiting_time_step
         
         done = self.locals['dones'][0]
         self.cumulative_reward += self.locals['rewards'][0]
@@ -38,10 +37,8 @@ class CustomMetricsCallback(BaseCallback):
     
     def _on_episode_end(self):
         self.metrics["episode"].append(self.episode)
-        mean_waiting_time_ep = self.total_waiting_times / self.step
-        self.metrics["mean_waiting_time"].append(mean_waiting_time_ep)
-        mean_acc_waiting_time_ep = self.total_acc_waiting_times / self.step
-        self.metrics["mean_acc_waiting_time"].append(mean_acc_waiting_time_ep)
+        #mean_acc_waiting_time_ep = self.total_acc_waiting_times / self.step
+        #self.metrics["mean_acc_waiting_time"].append(mean_acc_waiting_time_ep)
         self.metrics["cumulative_reward"].append(self.cumulative_reward)
         episode_end_time = time()
         episode_time = episode_end_time - self.episode_start_time
@@ -49,15 +46,19 @@ class CustomMetricsCallback(BaseCallback):
         
         self.metrics["loss_value"].append(self.model.logger.name_to_value.get('train/loss'))
         
-        self.step = 0
-        self.total_waiting_times = 0
-        self.total_acc_waiting_times = 0
-        self.cumulative_reward = 0
-    
-        self.episode += 1
+        mean_cwt = np.mean(self.arrivalCWT)
+        p95_cwt = np.percentile(self.arrivalCWT, 95)
+        self.metrics["mean_acc_waiting_time"].append(mean_cwt)
+        self.metrics["waiting_time_95p"].append(p95_cwt)
         
-        self.logger.record("train/mean_waiting_time", mean_waiting_time_ep)
-        self.logger.record("train/mean_acc_waiting_time", mean_acc_waiting_time_ep)
+        self.step = 0
+        #self.total_acc_waiting_times = 0
+        self.cumulative_reward = 0
+        self.arrivalCWT = []
+        self.episode += 1
+
+        self.logger.record("train/mean_acc_waiting_time", mean_cwt)
+        self.logger.record("train/95p_acc_waiting_time", p95_cwt)
         self.logger.record("time/episode_time", episode_time)
         
         self.episode_start_time = time()

@@ -2,7 +2,7 @@ import sys
 import os
 import random
 import numpy as np
-from typing import Dict
+from typing import Dict, Any, Optional, List
 
 import gymnasium as gym
 from gymnasium import spaces
@@ -10,6 +10,8 @@ from gymnasium import spaces
 import traci
 from sumolib import checkBinary
 
+from tscRL.environments.rewardFn import *
+from tscRL.environments.ienv import IEnv
 from tscRL.util.discrete import Discrete
 
 if 'SUMO_HOME' in os.environ:
@@ -21,9 +23,7 @@ else:
 
 state_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.states')
 os.makedirs(state_dir, exist_ok=True)
-HALTED = "halted"
-WAITING_TIME = "waitingTime"
-
+'''
 class Vehicle:
     def __init__(self, position, length, maxSpeed):
         self.position = position
@@ -33,25 +33,70 @@ class Vehicle:
     
     def update(self, deltaTime):
         self.waitingTime += deltaTime
-        
+'''
+
 class Lane:
-    def __init__(self, laneId, laneLength, edge=False):
+    HALTED = "halted"
+    WAITING_TIME = "waitingTime"
+    C_WAITING_TIME ="cWaitingTime"
+    def __init__(self, laneId, laneLength, laneInfos, edge=False):
         # self.vehicleMinGap = vehicleMinGap
         # self.vehicles = []
         self.laneId = laneId
         # self.laneLength = laneLength
-        self.lastStepHaltedVehicles = 0
-        self.lastStepWaitingTime = 0
+        self.haltedVehicles = 0
+        self.waitingTime = 0
+        self.cWaitingTime = 0
+        self.meanSpeed = 0
         self.edge = edge
+        self.laneInfos = laneInfos
+        for laneInfo in laneInfos:
+            if (laneInfo not in self.info.keys()):
+                raise ValueError("Invalid Lane Info Value. Use 'halted', 'waitingTime' or 'meanSpeed'.")
+        self.vehiclesCWTList = []
         
-    def update(self):
+    def _updateHaltedVehicles(self):
         if (self.edge):
-            self.lastStepHaltedVehicles = traci.edge.getLastStepHaltingNumber(self.laneId)
-            self.lastStepWaitingTime = traci.edge.getWaitingTime(self.laneId)
+            self.haltedVehicles = traci.edge.getLastStepHaltingNumber(self.laneId)
         else:
-            self.lastStepHaltedVehicles = traci.lane.getLastStepHaltingNumber(self.laneId)
-            self.lastStepWaitingTime = traci.lane.getWaitingTime(self.laneId)
+            self.haltedVehicles = traci.lane.getLastStepHaltingNumber(self.laneId)
+            
+    def _updateWaitingTime(self):
+        if (self.edge):
+            self.waitingTime = traci.edge.getWaitingTime(self.laneId)
+        else:
+            self.waitingTime = traci.lane.getWaitingTime(self.laneId)
+         
+    def _updateCWaitingTime(self):
+        '''
+        if (self.edge):
+            self.waitingTime = traci.edge.getWaitingTime(self.laneId)
+        else:
+            self.waitingTime = traci.lane.getWaitingTime(self.laneId)
+        '''    
+        laneCWaitingTime = 0
+        vehicleCWaitingTime = 0
+        self.vehiclesCWTList = []
+        vehicles = traci.lane.getLastStepVehicleIDs(self.laneId)
         
+        for vehicle in vehicles:
+            vehicleCWaitingTime = traci.vehicle.getAccumulatedWaitingTime(vehicle)
+            laneCWaitingTime += vehicleCWaitingTime
+            self.vehiclesCWTList.append(vehicleCWaitingTime)
+        self.cWaitingTime = laneCWaitingTime
+        return laneCWaitingTime
+                        
+    def update(self):
+        for laneInfo in self.laneInfos:
+            self.info[laneInfo](self)
+            
+        self._updateCWaitingTime()
+        ## TEMPORAL!!! Solo para testeoo de WT    
+        
+            
+    info = {HALTED: _updateHaltedVehicles,
+            WAITING_TIME: _updateWaitingTime,
+            C_WAITING_TIME: _updateCWaitingTime}
 
 class TrafficLight:
     class Phase:
@@ -127,10 +172,10 @@ class TrafficLight:
             return -2
 
 class State:
-    def __init__(self, tlPhase, lanes: Dict[str, Lane], discreteClass, laneInfo="halted"):
-        self.discreteClass = discreteClass
+    def __init__(self, tlPhase, lanes: Dict[str, Lane], discreteClasses, laneInfos):
+        self.discreteClasses = discreteClasses
         self.tlPhase = tlPhase
-        self.discreteLaneInfo = self.discretizeLaneInfo(lanes, laneInfo)
+        self.discreteLaneInfo = self.discretizeLaneInfo(lanes, laneInfos)
 
     def getTupleState(self):
         return (self.tlPhase, *self.discreteLaneInfo)
@@ -138,41 +183,45 @@ class State:
     def getArrayState(self):
         return np.append(self.tlPhase, self.discreteLaneInfo)
 
-    def discretizeLaneInfo(self, lanes: Dict[str, Lane], laneInfo):
+    def discretizeLaneInfo(self, lanes: Dict[str, Lane], laneInfos):
         # discreteLaneQueue: Dict[str, int] = {}
         discreteLaneInfo = []
-        if laneInfo == "waitingTime":
-            for lane in lanes.values():
-                discreteLaneInfo.append(self.discreteClass.log_interval(lane.lastStepWaitingTime))
-            return discreteLaneInfo
-        else:
-            for lane in lanes.values():
-                discreteLaneInfo.append(self.discreteClass.log_interval(lane.lastStepHaltedVehicles))
-            if laneInfo != "halted":
-                print("Warning: " + "Invalid laneInfo value = " + laneInfo + ". \"halted\" value was assigned instead.")
-            return discreteLaneInfo          
         
-class SumoEnvironment(gym.Env):
-    MAX_VEH_LANE = 30      # adjust according to lane length? Param?
-    MAX_WAITING_TIME = 500 # Param?
+        if Lane.C_WAITING_TIME in laneInfos:
+            for lane in lanes.values():
+                discreteLaneInfo.append(self.discreteClasses[Lane.C_WAITING_TIME].log_interval(lane.cWaitingTime)) 
+        
+        if Lane.WAITING_TIME in laneInfos:
+            for lane in lanes.values():
+                discreteLaneInfo.append(self.discreteClasses[Lane.WAITING_TIME].log_interval(lane.waitingTime)) 
+        if Lane.HALTED in laneInfos:
+            for lane in lanes.values():
+                discreteLaneInfo.append(self.discreteClasses[Lane.HALTED].log_interval(lane.haltedVehicles))
+
+        return discreteLaneInfo          
+
+class SumoEnvironment(IEnv, gym.Env):
+    #MAX_VEH_LANE = 30      # adjust according to lane length? Param?
+    #MAX_WAITING_TIME = 500 # Param?
     def __init__(
         self,
-        sumocfgFile,
-        deltaTime=5,
-        yellowTime=4,
-        minGreenTime=5,
-        gui=False,
-        edges=False,
-        discreteIntervals=6,
-        maxLaneValue=60,
-        laneInfo="halted",
-        rewardFn="diff_halted",
-        fixedTL=False,
-        simTime=43800,
-        warmingTime=600,
-        sumoLog=False,
-        waitingTimeMemory=1000
+        sumocfgFile:str,
+        deltaTime:int=5,
+        yellowTime:int=4,
+        minGreenTime:int=10,
+        gui:bool=False,
+        edges:bool=False,
+        encodeIntervals:Dict[str, int]={Lane.WAITING_TIME:20},
+        maxEncodeValue:Dict[str, int]={Lane.WAITING_TIME:2500},
+        laneInfos:List[str]=[Lane.WAITING_TIME],
+        rewardFn:RewardFn = DiffCWaitingTime(1.0),
+        fixedTL:bool=False,
+        simTime:int=43800,
+        warmingTime:int=600,
+        sumoLog:bool=False,
+        waitingTimeMemory:int=1000
     ) -> None:
+        
         self.sumocfgFile = sumocfgFile
         self.stateFile = os.path.join(state_dir, 'initialState.xml')
         self.gui = gui
@@ -182,19 +231,20 @@ class SumoEnvironment(gym.Env):
             self.sumoBinary = checkBinary("sumo")
         self.simTime = simTime
         assert(yellowTime < deltaTime)
+        assert all(laneInfo in encodeIntervals for laneInfo in laneInfos)
+        assert all(laneInfo in maxEncodeValue for laneInfo in laneInfos)
+        # Assert con laneInfos. QUe los valores de laneInfos esten en  las keys de encodeIntervals y maxEncodeValue
         self.deltaTime = deltaTime
         self.fixedTL=fixedTL
         self.haltedVehicles = 0
-        self.waitingTime = 0
-        self.cumulativeWaitingTime = 0
+        self.cWaitingTime = 0
+        self.vehWTList = []
         
-        self.laneInfo = laneInfo
-        if rewardFn in self.rewardFns.keys():
-            self.rewardFn = self.rewardFns[rewardFn]
-        else:
-            self.rewardFn = self.rewardFns["diff_halted"]
-            print("Warning: Invalid rewardFn value. \"diff_halted\" value was assigned instead.")
-        
+        self.laneInfos = laneInfos
+      
+        self.rewardFn = rewardFn
+        self.rewardFn.setEnv(self)
+            
         self.sumoLog = sumoLog
         self.waitingTimeMemory = waitingTimeMemory
         
@@ -211,10 +261,17 @@ class SumoEnvironment(gym.Env):
                 if edges:
                     laneId = traci.lane.getEdgeID(laneId) 
                 if laneId not in self.lanes:
-                    self.lanes[laneId] = Lane(laneId, traci.lane.getLength(laneId), edge = edges)
+                    self.lanes[laneId] = Lane(laneId, traci.lane.getLength(laneId), laneInfos=self.laneInfos, edge = edges)
         
-        # Discrete Class. For encoding lane info
-        self.discreteClass = Discrete(discreteIntervals, maxLaneValue)
+        # Discrete Classes. For encoding lane info
+        self.discreteClasses = {}
+        if Lane.WAITING_TIME in self.laneInfos:
+            self.discreteClasses[Lane.WAITING_TIME] = Discrete(encodeIntervals[Lane.WAITING_TIME], maxEncodeValue[Lane.WAITING_TIME])
+        if Lane.C_WAITING_TIME in self.laneInfos:
+            self.discreteClasses[Lane.C_WAITING_TIME] = Discrete(encodeIntervals[Lane.C_WAITING_TIME], maxEncodeValue[Lane.C_WAITING_TIME])
+        if Lane.HALTED in self.laneInfos:
+            self.discreteClasses[Lane.HALTED] = Discrete(encodeIntervals[Lane.HALTED], maxEncodeValue[Lane.HALTED])
+            
         warmingTime = 600
         #Warming up
         self._warmingUpSimulation(warmingTime)
@@ -231,11 +288,12 @@ class SumoEnvironment(gym.Env):
         self.action_space = self.trafficLight.actionSpace
 
         # Observation space
-        low = np.zeros(len(self.lanes)+1)
-        high = np.full(self.action_space.n + 1, discreteIntervals)
-        high[0] = self.action_space.n
+        low = np.zeros(len(self.lanes) * len(self.laneInfos) + 1)
+        high = np.array([self.action_space.n])
+        for maxValue in encodeIntervals.values():
+            high = np.concatenate((high, np.full(len(self.lanes), maxValue)))
         self.observation_space = spaces.Box(low=low, high=high, dtype=np.int64)
-        
+        self.jainIndex = 1
 
     @property
     def simStep(self):
@@ -246,10 +304,12 @@ class SumoEnvironment(gym.Env):
         return [actionKey for actionKey in self.trafficLight.PHASES if actionKey != 'init']
        
     def _initializeSimulation(self):
-        sumoCMD = [self.sumoBinary, "-c", self.sumocfgFile, "--waiting-time-memory", str(self.waitingTimeMemory)
+        sumoCMD = [self.sumoBinary,
+                   "-c", self.sumocfgFile,
+                   "--waiting-time-memory", str(self.waitingTimeMemory),
+                   "--keep-after-arrival", str(self.deltaTime)
                    #"--tripinfo-output", "tripinfo.xml"
                    ]
-        
         if not(self.sumoLog):
             sumoCMD.append("--no-step-log")
             sumoCMD.append("--no-warnings")
@@ -259,7 +319,6 @@ class SumoEnvironment(gym.Env):
         
         try:
             traci.start(sumoCMD)
-            
         except traci.TraCIException as traci_e:
             print(traci_e, end="")
             print(" Closing connection...")
@@ -275,12 +334,13 @@ class SumoEnvironment(gym.Env):
         traci.simulationStep(warmingTime-1) # Warming Time
         traci.trafficlight.setRedYellowGreenState(self.trafficLight.id, self.trafficLight.PHASES[0].state)
         traci.simulationStep()
-        self.waitingTime = self._getTotalWaitingTime()
-        self.haltedVehicles = self._getTotalHaltedVehicles()
+        
+        self.updateLanesInfo()
+        self.cWaitingTime = self.getTotalCWaitingTime()
+        self.haltedVehicles = self.getTotalHaltedVehicles()
         self.trafficLight.currentPhase = self.trafficLight.initIndex
         self.trafficLight.nextPhase = self.trafficLight.initIndex
-        for lane in self.lanes.values():
-            lane.update()
+    
         traci.simulation.saveState(self.stateFile)
         
     def _setTLProgram(self, programID: int):
@@ -292,68 +352,134 @@ class SumoEnvironment(gym.Env):
             traci.trafficlight.setProgram(tls_ids[0], "1")
             
     def getCurrentState(self):
-        state = State(self.trafficLight.currentPhase, self.lanes, self.discreteClass, self.laneInfo)
+        state = State(self.trafficLight.currentPhase, self.lanes, self.discreteClasses, self.laneInfos)
         return state.getArrayState()
         #return state.getTupleState()
+        
+    def getArrivalCWTList(self):
+        arrivalCWT = []
+        arrivedVehList = traci.simulation.getArrivedIDList()
+        for vehId in arrivedVehList:
+            arrivalCWT.append(traci.vehicle.getAccumulatedWaitingTime(vehId))
+        return arrivalCWT
+        
+    def getTotalHaltedVehicles(self):
+        return sum(lane.haltedVehicles for lane in self.lanes.values())
     
-    def _getTotalHaltedVehicles(self):
-        return sum(lane.lastStepHaltedVehicles for lane in self.lanes.values())
+    def getTotalWaitingTime(self):
+        return sum(lane.waitingTime for lane in self.lanes.values())
     
-    def _getTotalWaitingTime(self):
-        return sum(lane.lastStepWaitingTime for lane in self.lanes.values())
+    def getTotalCWaitingTime(self):
+        return sum(lane.cWaitingTime for lane in self.lanes.values())
+    
+    def getTotalExpCWaitingTime(self):
+        return sum(sum(pow(cwt,2) for cwt in lane.vehiclesCWTList) for lane in self.lanes.values())
+    
+    def getJainIndex(self):
+        allVehiclesWTList = []
+        wTSum = 0
+        for lane in self.lanes.values():
+            allVehiclesWTList += lane.vehiclesWTList
+            wTSum += lane.cWaitingTime
+            
+        self.vehWTList = allVehiclesWTList
+        squaredWTSum = 0
+        for vehWT in allVehiclesWTList:
+            squaredWTSum += pow(vehWT, 2)
+        if (squaredWTSum != 0):
+            jainIndex = pow(wTSum,2)/(len(self.vehWTList)*squaredWTSum)
+        else:
+            jainIndex = 0
+
+        return jainIndex
     
     def computeReward(self):
-        return self.rewardFn(self)
-    
-    def _getAccumulatedWaitingTime(self):
-        accumulatedWaitingTime = 0
-        for lane in self.lanes.values():
-            vehicles = traci.lane.getLastStepVehicleIDs(lane.laneId)
-            for vehicle in vehicles:
-                accumulatedWaitingTime += traci.vehicle.getAccumulatedWaitingTime(vehicle)
-                
-        return accumulatedWaitingTime
-    
+        return self.rewardFn.computeReward()
+        '''
+        r1 = self.mainRewardFn(self)
+        r2 = 0
+        weight = 0
+        if self.fairRewardFn != None:
+            weight = self.fairRewardWeight
+            r2 = self.fairRewardFn(self)
+        return r1 + weight*r2
+        '''
+        
+    '''
     def _diffHalted(self):
-        currentStepHaltedVehicles = self._getTotalHaltedVehicles()
+        currentStepHaltedVehicles = self.getTotalHaltedVehicles()
         reward = self.haltedVehicles-currentStepHaltedVehicles
         self.haltedVehicles = currentStepHaltedVehicles
         return reward
 
     def _diffWaitingTime(self):
-        currentWaitingTime = self._getTotalWaitingTime()
+        currentWaitingTime = self.getTotalWaitingTime()
         reward = self.waitingTime - currentWaitingTime
         self.waitingTime = currentWaitingTime
         return reward
 
-    def _diffAccumulatedWaitingTime(self):
-        currentAccWaitingTime = self._getAccumulatedWaitingTime()
-        reward = self.cumulativeWaitingTime - currentAccWaitingTime
-        self.cumulativeWaitingTime = currentAccWaitingTime
+    def _diffCWaitingTime(self):
+        currentCWaitingTime = self.getTotalCWaitingTime()
+        reward = self.cWaitingTime - currentCWaitingTime
+        self.cWaitingTime = currentCWaitingTime
         return reward
 
+    def _jainFairness(self, negative=True):
+        allVehiclesWTList = []
+        wTSum = 0
+        for lane in self.lanes.values():
+            allVehiclesWTList += lane.vehiclesWTList
+            wTSum += lane.cWaitingTime
+            
+        self.vehWTList = allVehiclesWTList
+        squaredWTSum = 0
+        for vehWT in allVehiclesWTList:
+            squaredWTSum += pow(vehWT, 2)
+        if (squaredWTSum != 0):
+            jainIndex = pow(wTSum,2)/(len(self.vehWTList)*squaredWTSum)
+        else:
+            jainIndex = 0
+        
+        if negative:
+            return -(1-jainIndex)*self.fairRewardWeight
+        else:
+            return jainIndex*self.fairRewardWeight
+        
+    def _diffJainIndex(self):
+        allVehiclesWTList = []
+        wTSum = 0
+        for lane in self.lanes.values():
+            allVehiclesWTList += lane.vehiclesWTList
+            wTSum += lane.cWaitingTime
+            
+        self.vehWTList = allVehiclesWTList
+        squaredWTSum = 0
+        for vehWT in allVehiclesWTList:
+            squaredWTSum += pow(vehWT, 2)
+        if (squaredWTSum != 0):
+            jainIndex = pow(wTSum,2)/(len(self.vehWTList)*squaredWTSum)
+        else:
+            jainIndex = 0
+        reward = -(self.jainIndex-jainIndex)
+        self.jainIndex = jainIndex
+        return reward
+    
+    '''
     def getInfo(self):        
-        vehicleCount = traci.vehicle.getIDCount()
-        
-        if (self.rewardFn in [self.rewardFns["diff_halted"], self.rewardFns["diff_cumulativeWaitingTime"]]):
-            self.waitingTime = self._getTotalWaitingTime()
-        elif (self.rewardFn == self.rewardFns["diff_waitingTime"]):
-            self.haltedVehicles = self._getTotalHaltedVehicles()
-            
-        meanWaitingTime = self.waitingTime / vehicleCount if vehicleCount > 0 else 0
-        
-        if self.rewardFn != self.rewardFns["diff_cumulativeWaitingTime"]:
-            self.cumulativeWaitingTime = self._getAccumulatedWaitingTime()
-            
-        meanAccWaitingTime = self.cumulativeWaitingTime / vehicleCount if vehicleCount > 0 else 0
+        #vehicleCount = traci.vehicle.getIDCount()
 
+        #meanCWaitingTime = self.cWaitingTime / vehicleCount if vehicleCount > 0 else 0
         info = {
             "sim_step": self.simStep,
-            "mean_waiting_time": meanWaitingTime,
-            "mean_acc_waiting_time": meanAccWaitingTime
+            #"mean_acc_waiting_time": meanCWaitingTime,
+            "arrival_acc_waiting_times": self.getArrivalCWTList()
         }
         return info
-        
+    
+    def updateLanesInfo(self):
+        for lane in self.lanes.values():
+            lane.update()
+            
     def step(self, action=None):
         # previousPhaseTime = 0
         # TOMAR ACCIÓN
@@ -366,8 +492,7 @@ class SumoEnvironment(gym.Env):
             for _ in range(self.deltaTime):
                 self.trafficLight.update()
             
-        for lane in self.lanes.values():
-            lane.update()
+        self.updateLanesInfo()
         
         state = self.getCurrentState()
         reward = self.computeReward()
@@ -385,21 +510,27 @@ class SumoEnvironment(gym.Env):
         self.trafficLight.currentPhaseTime = 0
 
         self.haltedVehicles = 0
-        self.waitingTime = 0
-        self.cumulativeWaitingTime = 0
+        self.cWaitingTime = 0
+        self.vehWTList = []
+        self.jainIndex = 1
         
         for laneKey in self.lanes:
-            self.lanes[laneKey].lastStepHaltedVehicles = 0
+            self.lanes[laneKey].haltedVehicles = 0
             self.lanes[laneKey].waitingTime = 0
+            self.lanes[laneKey].cWaitingTime = 0
+            self.lanes[laneKey].meanSpeed = 0
+            self.lanes[laneKey].vehiclesWTList = []
             
         try:
             traci.simulation.loadState(self.stateFile)
         except traci.TraCIException:
             self._initializeSimulation()
             traci.simulation.loadState(self.stateFile)
+            
+        self.updateLanesInfo()
         
-        self.waitingTime = self._getTotalWaitingTime()
-        self.haltedVehicles = self._getTotalHaltedVehicles()
+        self.cWaitingTime = self.getTotalCWaitingTime()
+        self.haltedVehicles = self.getTotalHaltedVehicles()
         
         state = self.getCurrentState()
         info = self.getInfo()
@@ -413,6 +544,11 @@ class SumoEnvironment(gym.Env):
     def __del__(self):
         self.close()
             
-    rewardFns = {"diff_halted": _diffHalted,
-                "diff_waitingTime": _diffWaitingTime,
-                "diff_cumulativeWaitingTime": _diffAccumulatedWaitingTime}
+    '''
+    rewardFns = {DIFF_HALTED: _diffHalted,
+                 DIFF_CWAITING_TIME: _diffCWaitingTime,
+                }
+    fairRewardFns = {JAIN_FAIRNESS: _jainFairness,
+                     DIFF_N_JAIN: _diffJainIndex
+                }
+    '''
